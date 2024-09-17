@@ -6,6 +6,7 @@ import Model.ModelJeu;
 public class ControllerJeu {
     private ModelJeu model;
     private boolean jeuEnCours = true;
+    private Joueur vainqueur;
 
 
     public ControllerJeu(ModelJeu model) {
@@ -15,6 +16,7 @@ public class ControllerJeu {
     public void deroulementTour(){
        if (this.model.JoueurActifFrappe(this.model.getJoueurActuel().getMonstre().getForce())){
            this.jeuEnCours = false;
+           this.vainqueur = this.model.getJoueurCible();
        }
        else
            this.jeuEnCours = true;
@@ -28,4 +30,14 @@ public class ControllerJeu {
     public Joueur affichageDebutTourJoueur(){
         return this.model.getJoueurActuel();
     }
+
+    public Joueur getVainqueur() {
+        return vainqueur;
+    }
+
+    public boolean isJeuEnCours() {
+        return jeuEnCours;
+    }
+
+
 }

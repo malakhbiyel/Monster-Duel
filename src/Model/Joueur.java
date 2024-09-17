@@ -11,7 +11,7 @@ public class Joueur {
 
     public boolean subitFrappe(Joueur attaquant, int forceFrappe) {
             this.monstre.subitFrappe(forceFrappe);
-            if (this.monstre.getVie()==0) return true;
+            if (this.monstre.getVie()<0) return true;
             else return false;
     }
 
