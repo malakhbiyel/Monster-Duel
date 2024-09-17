@@ -29,4 +29,20 @@ public class Joueur {
                 ", monstre=" + monstre +
                 '}';
     }
+
+    public Monstre getMonstre() {
+        return monstre;
+    }
+
+    public void setMonstre(Monstre monstre) {
+        this.monstre = monstre;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 }
