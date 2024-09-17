@@ -13,12 +13,8 @@ public class Main {
         //System.out.println(joueur2.toString());
         ModelJeu model= new ModelJeu(joueur1, joueur2);
         ControllerJeu controller = new ControllerJeu(model);
-        while(controller.isJeuEnCours()){
-           System.out.println(controller.affichageDebutTourJoueur());
-           controller.deroulementTour();
-           controller.updateStatusJeu();
-        }
-        System.out.println("le vainqueur est :"+ controller.getVainqueur().toString());
+        ViewJeu view = new ViewJeu(controller);
+        view.run();
 
     }
 
