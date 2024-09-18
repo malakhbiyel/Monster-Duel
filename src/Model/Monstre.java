@@ -1,8 +1,8 @@
 package Model;
 
-public class Monstre {
-    private int vie;
-    private final int force;
+abstract public class Monstre {
+    protected int vie;
+    protected int force;
 
     public Monstre(int vie, int force, int defense, String nom) {
         this.vie = vie;
@@ -18,16 +18,11 @@ public class Monstre {
         return vie;
     }
 
-
     public int getForce() {
         return force;
     }
 
-
-
-    public void subitFrappe(int Force){
-        this.vie -= Force;
-    }
+    public abstract void subitFrappe(int Force);
 
     @Override
     public String toString() {
