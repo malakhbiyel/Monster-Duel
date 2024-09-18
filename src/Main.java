@@ -15,7 +15,6 @@ public class Main {
         ControllerJeu controller = new ControllerJeu(model);
         ViewJeu view = new ViewJeu(controller);
         view.run();
-
     }
 
 }
