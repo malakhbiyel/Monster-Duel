@@ -4,7 +4,11 @@ import Model.Joueur;
 import Model.ModelJeu;
 
 public class ControllerJeu {
-    private ModelJeu model;
+    public ModelJeu getModel() {
+        return model;
+    }
+
+    private final ModelJeu model;
     private boolean jeuEnCours = true;
     private Joueur vainqueur;
 
@@ -21,11 +25,10 @@ public class ControllerJeu {
        else
            this.jeuEnCours = true;
     }
-    public boolean updateStatusJeu() {
+    public void updateStatusJeu() {
         if (this.jeuEnCours) {
             this.model.tourSuivant();
-            return true;}
-        else return false;
+        }
     }
     public Joueur affichageDebutTourJoueur(){
         return this.model.getJoueurActuel();

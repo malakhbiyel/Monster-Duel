@@ -2,8 +2,8 @@ package Model;
 
 public class ModelJeu {
 
-    private Joueur joueur1;
-    private Joueur joueur2;
+    private final Joueur joueur1;
+    private final Joueur joueur2;
     private  Joueur joueurActuel;
     public Joueur joueurCible;
 
@@ -17,10 +17,7 @@ public class ModelJeu {
     }
 
     public boolean JoueurActifFrappe(int force){
-        if(this.joueurActuel.frapperAutreJoueur(this.joueurCible, force)){
-            return true;
-        }
-        else return false;
+        return this.joueurActuel.frapperAutreJoueur(this.joueurCible, force);
     }
 
     public void tourSuivant(){
@@ -31,7 +28,7 @@ public class ModelJeu {
 
     @Override
     public String toString() {
-        return "ModelJeu{" +
+        return "ModelJeu=>" +
                 "joueur1=" + joueur1 +
                 ", joueur2=" + joueur2 +
                 '}';

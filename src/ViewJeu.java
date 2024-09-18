@@ -1,6 +1,7 @@
 import Controller.ControllerJeu;
 import Model.Joueur;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ViewJeu {
@@ -10,39 +11,48 @@ public class ViewJeu {
         this.controller = controller;
     }
 
-    public ControllerJeu getController() {
-        return controller;
-    }
-
-    public void setController(ControllerJeu controller) {
-        this.controller = controller;
-    }
-
     public void aurevoir(){
         System.out.println("Au revoir ! ");
     }
 
-    public void run() {
+    public void run(){
+        Scanner scanner = new Scanner(System.in);
         while (controller.isJeuEnCours()) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Voulez vous continuer le jeu ? (O/N)");
-            String choix = scanner.nextLine();
-            if (choix.equals("O")) {
-                aurevoir();
-                break;
-            }
-            else {
-                System.out.println(controller.affichageDebutTourJoueur());
-                controller.deroulementTour();
-                controller.updateStatusJeu();
-                Joueur vainqueur = controller.getVainqueur();
-                if (vainqueur != null) {
-                    System.out.println("Le vainqueur est : " + vainqueur.toString());
-                } else {
-                    System.out.println("Aucun vainqueur pour le moment.");
-                }
+            System.out.println("Que voulez vous faire ?");
+            System.out.println("1 - Frapper votre adversaire");
+            System.out.println("2 - Afficher les statistiques de votre adversaire");
+            System.out.println("3 - Quitter le jeu");
 
+           try { int choix = scanner.nextInt();
+            switch (choix) {
+                case 1:
+                    System.out.println(controller.affichageDebutTourJoueur());
+                    controller.deroulementTour();
+                    controller.updateStatusJeu();
+                    Joueur vainqueur = controller.getVainqueur();
+                    if (vainqueur != null) {
+                        System.out.println("Le vainqueur est : " + vainqueur);
+                    } else {
+                        System.out.println("Aucun vainqueur pour le moment.");
+                    }
+                    break;
+
+                case 2:
+                    System.out.println(this.controller.getModel().getJoueurCible().toString());
+                    break;
+
+                case 3:
+                    aurevoir();
+                    return;
+
+                default:
+                    System.out.println("Choix invalide! Veuillez réessayer.");
+                    break;
             }
+        } catch(InputMismatchException e){
+               System.out.println("Entrée invalide. Veuillez entrer un nombre.");
+               scanner.next();
+           }
         }
     }
 }
