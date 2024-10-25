@@ -1,0 +1,1 @@
+Un jeu Java sur console où deux joueurs s'affrontent dans le but d'éliminer le monstre de l'adversaire. Le jeu se déroule en mode tour par tour, et le premier joueur à éliminer le monstre de son opposant remporte la partie.
